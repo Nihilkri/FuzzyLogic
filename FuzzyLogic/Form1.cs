@@ -74,7 +74,10 @@ D    <=
 E    OR
 F    True", Font, Brushes.White, fx2, 0);
 					for(int q = 0 ; q < 16 ; q++) {
-						if(!nw[q]) gf.DrawString("mn[" + q + "] = " + mn[q], Font, Brushes.White, fx2 + 60, 12.5f * q);
+						if(!nw[q]) {
+							gf.DrawString("mn[" + q + "] = " + mn[q], Font, Brushes.White, fx2 + 60, 12.5f * q);
+							gf.DrawString("mx[" + q + "] = " + mx[q], Font, Brushes.White, fx2 + 180, 12.5f * q);
+						}
 
 
 					}
@@ -112,11 +115,15 @@ F    True", Font, Brushes.White, fx2, 0);
 			switch(mode) {
 				case 0: return 0.0; // False
 				case 1: return (1.0 - a) * (1.0 - b); // NOR
+				case 3: return 1.0 - a; // NOT A
+				case 5: return 1.0 - b; // NOT B
 				case 6: return 1.0 - (1.0 - (1.0 - a) * b) * (1.0 - a * (1.0 - b)); // XOR
 				case 7: return 1 - (a * b); //NAND
 				case 8: return a * b; //AND
 				case 9: return (1.0 - (1.0 - a) * b) * (1.0 - a * (1.0 - b)); // XNOR
+				case 10: return b; // B
 				case 11: return 1.0 - (a * (1.0 - b)); // IMP
+				case 12: return a; // A
 				case 14: return 1.0 - ((1.0 - a) * (1.0 - b)); // OR
 				case 15: return 1.0; // True
 
